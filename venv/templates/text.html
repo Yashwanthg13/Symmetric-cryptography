@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Symmetric Cryptography</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}" />
+  </head>
+  <body>
+    <header>
+      <a id="ok" href="{{url_for('index')}}" style="color: #4CAF50;text-decoration: none;">HOME</a></header>
+    <div class="container">
+      <div id="heading-container">
+        <h3>TEXT CRYPTOGRAPHY</h3>
+      </div>
+      <div id="main-container">
+        <div class="box">
+          <div class="heading">
+            <h2>Select Method</h2>
+          </div>
+          <table>
+            <tr>
+              <td>Caesar Cipher</td>  
+              <td><a href="{{url_for('caeser_cipher')}}"><button>Select</button></a></td>
+            </tr>
+            <tr>
+              <td> Monoalphabetic Cipher</td>
+              <td><a href="{{url_for('monoalphabetic_cipher')}}"><button>Select</button></a></td>
+            </tr>
+            <tr>
+              <td>Playfair Cipher</td>   
+              <td> <a href="{{url_for('playfair_cipher')}}"><button>Select</button></a></td>
+            </tr>
+            <tr>
+              <td>Hill Cipher</td>  
+              <td> <a href="{{url_for('hill_cipher')}}"><button>Select</button></a></td>
+            </tr>
+            <tr>
+              <td>Vigenere Cipher</td>  
+              <td> <a href="{{url_for('vigenere_cipher')}}"><button>Select</button></a></td>
+            </tr>
+            <tr>
+              <td>Columnar Transposition</td>
+               
+              <td> <a href=" {{url_for('columnar_transposition_cipher')}}"><button>Select</button></a></td>
+            </tr>
+            <tr>
+              <td>Rail Fence Cipher</td>  
+              <td> <a href="{{url_for('railfence_cipher')}}"><button>Select</button></a></td>
+            </tr>
+            <tr> 
+              <td>IDEA</td>    
+              <td> <a href="{{url_for('IDEA_cipher')}}"><button>Select</button></a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+  </body>
+</html>

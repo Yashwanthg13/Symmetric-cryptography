@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playfair Cipher File Encrypter & Decrypter</title>
+<link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/style.css')}}"
+    />
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .contain {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+  }
+  h1 {
+    margin-bottom: 20px;
+  }
+  textarea {
+    width: 90%;
+    height: 200px;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    resize: vertical;
+  }
+  input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+  input[type="file"] {
+    margin-bottom: 10px;
+  }
+  .file-info {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  #downloadButton {
+    display: none;
+  }
+</style>
+</head>
+<body><header>
+    <a id="ok" href="{{url_for('index')}}" style="color: #4CAF50;text-decoration: none;">HOME</a></header>
+  <div class="contain">
+    <h1>Playfair Cipher</h1>
+    <input type="file" id="fileInput" accept=".txt">
+    <br>
+    <input type="text" id="key" placeholder="Enter key">
+    <br>
+    <textarea id="fileContent" readonly></textarea>
+    <br>
+    <button onclick="encryptFile()">Encrypt</button>
+    <button onclick="decryptFile()">Decrypt</button>
+    <a id="downloadButton" download="ciphertext.txt">
+      <button>Download</button>
+    </a>
+    <div class="file-info">
+      <p>File Size: <span id="fileSize"></span> bytes</p>
+    </div>
+  </div>
+
+  <script src="{{url_for('static',filename='script/playfair_file.js')}}"></script>
+</body>
+</html>

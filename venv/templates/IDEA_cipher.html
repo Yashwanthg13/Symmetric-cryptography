@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDEA Cipher</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}"/> <!-- Link to the provided CSS -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html {
+            height: 100%;
+            user-select: none;
+            font-family: Roboto, sans-serif;
+        }
+        body {
+            background-color: #f2f4f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 16px;
+        }
+        h1 {
+            font-size: 50px;
+            color: #0f9d58;
+            margin-bottom: 16px;
+        }
+        .content {
+            display: flexbox;
+            max-width: 800px;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.14);
+            padding: 16px;
+            border-radius: 8px;
+        }
+        #message, #result {
+            min-height: 100px;
+            user-select: all;
+            word-break: break-all;
+            border: 1px solid #e3e8ec;
+            border-radius: 4px;
+            padding: 8px;
+            margin-bottom: 16px;
+            resize: none;
+            font-size: 16px;
+        }
+        #key {
+            padding: 8px;
+            display: block;
+            border: 1px solid #e3e8ec;
+            border-radius: 4px;
+            width: 100%;
+            margin-bottom: 16px;
+        }
+        #key.error {
+            border-color: red;
+        }
+        .line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        button:hover {
+            background-color: #11ab61;
+            border-color: #11ab61;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+        header nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        header nav ul li a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <a id="ok" href="{{url_for('index')}}" style="color: #4CAF50;text-decoration: none;">HOME</a></header>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h3 style="text-align: center;font-style: italic;">IDEA Cipher</h3><br>
+        <div class="content">
+            <div class="line">
+                <input type="text" placeholder="Key" id="key" autofocus oninput="this.className = ''">
+                <div>
+                    <b>Mode:</b>
+                    <label style="display: inline-flex; align-items: center">
+                        <input type="radio" checked style="margin: 4px">
+                        ECB
+                    </label>
+                </div>
+                <button onclick="encrypt()">Encrypt</button>
+                <button onclick="decrypt()">Decrypt</button>
+            </div>
+            <div contenteditable id="message" onfocus="select(this)">Input</div>
+            <div id="result" onclick="copy(this)">Output</div>
+        </div>
+    </main>
+    <script>
+        const selection = window.getSelection();
+
+        function select(el) {
+            selection.selectAllChildren(el);
+        }
+
+        function copy(el) {
+            select(el);
+            document.execCommand('copy');
+        }
+
+        let lastKey, cache;
+        function cipher() {
+            try {
+                if (lastKey != key.value) cache = new IDEA(key.value);
+                return cache;
+            } catch (e) {
+                key.className = 'error';
+            }
+        }
+
+        function encrypt() {
+            let res = cipher().encrypt(message.textContent);
+            result.textContent = [...res].map(ch => ch.toString(16)).join(' ');
+        }
+
+        function decrypt() {
+            let bytes = message.textContent.match(/\S{1,2}/g).map(byte => parseInt(byte, 16));
+            result.textContent = cipher().decrypt(new Uint8Array(bytes));
+        }
+    </script>
+    <script src="{{url_for('static',filename='script/IDEA_cipher.js')}}"></script>
+</body>
+</html>

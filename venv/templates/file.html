@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Symmetric Cryptography</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}" />
+  </head>
+  <body>
+    <header>
+      <a id="ok" href="{{url_for('index')}}" style="color: #4CAF50;text-decoration: none;">HOME</a></header>
+    <div class="container">
+      <div id="heading-container">
+        <h3>FILE CRYPTOGRAPHY</h3>
+      </div>
+      <div id="main-container">
+        <div class="box">
+          <div class="heading">
+            <h2>Select Method</h2>
+          </div>
+          <table>
+            <tr>
+              <td>Caesar Cipher</td>  
+              <td><a href="{{url_for('caeser_file')}}"><button>Select</button></a></td>
+            </tr>
+            <tr>
+              <td>Monoalphabetic Cipher</td>
+              <td><a href="{{url_for('monoalphabetic_file')}}"><button>Select</button></a></td>
+            </tr>
+            <tr>
+              <td>Playfair Cipher</td>   
+              <td> <a href="{{url_for('playfair_file')}}"><button>Select</button></a></td>
+            </tr>
+            <tr>
+              <td>Hill Cipher</td>  
+              <td> <a href="{{url_for('hill_file')}}"><button>Select</button></a></td>
+            </tr>
+            <tr>
+              <td>Vigenere Cipher</td>  
+              <td> <a href="{{url_for('vigenere_file')}}"><button>Select</button></a></td>
+            </tr>
+            <tr>
+              <td>Columnar Transposition</td>
+               
+              <td> <a href=" {{url_for('columnar_transposition_file')}}"><button>Select</button></a></td>
+            </tr>
+            <tr>
+              <td>Rail Fence Cipher</td>  
+              <td> <a href="{{url_for('railfence_file')}}"><button>Select</button></a></td>
+            </tr>
+            <tr> 
+              <td>AES</td>    
+              <td> <a href="{{url_for('AES_file')}}"><button>Select</button></a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+  </body>
+</html>

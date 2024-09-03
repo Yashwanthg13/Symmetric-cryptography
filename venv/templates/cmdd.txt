@@ -1,0 +1,3 @@
+PS C:\Users\Yashwanth G\OneDrive\Desktop\flask> Set-ExecutionPolicy -Scope Process Bypass
+PS C:\Users\Yashwanth G\OneDrive\Desktop\flask> .\venv\Scripts\activate
+(venv) PS C:\Users\Yashwanth G\OneDrive\Desktop\flask> 
